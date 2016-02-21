@@ -21,6 +21,17 @@ function processRoute()
 {
 	$requestUri = $_SERVER['PATH_INFO'];
 
+	$route['a'] = $requestUri;
 
-	
+	return $route;
+}
+
+/**
+ * get uri segment
+ * 
+ * @return string
+ */
+function uriSegment()
+{
+
 }

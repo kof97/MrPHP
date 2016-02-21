@@ -27,9 +27,7 @@ class Mr
 		if (!DEBUG) {
 			error_reporting(0);
 		}
-
 		Mr::import(CORE_PATH . 'application.func.php');
-
 
 		MrRun::run();
 	}
