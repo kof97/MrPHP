@@ -15,23 +15,55 @@
 /**
  * process route.
  *
- * @return void
+ * @return string
  */
 function processRoute()
 {
-	$requestUri = $_SERVER['PATH_INFO'];
+	$requestUri = $_SERVER["REQUEST_URI"];
 
-	$route['a'] = $requestUri;
+	// $flag if exists index.php
+	$judgeIndex = strpos($requestUri, "index.php");
+	if ($judgeIndex) {
+		$pathInfo = substr($requestUri, $judgeIndex + 9);
+	} else {
+		// if whole uri
+		$judgeUri = strpos($requestUri, ITEM_NAME);
+		if ($judgeUri) {
+			$pathInfo = substr($requestUri, $judgeUri + strlen(ITEM_NAME));
+		} else {
+			$pathInfo = $requestUri;
+		}
+	}
 
-	return $route;
+	return $pathInfo;
+
 }
 
 /**
- * get uri segment
+ * get uri segment.
  * 
  * @return string
  */
-function uriSegment()
+function uriSegment($segment)
+{
+	$getRoute = processRoute();
+	$route = explode('/', $getRoute);
+
+	if ($segment >= count($route)) {
+		return "";
+	} else {
+		return $route[$segment];
+	}	
+
+}
+
+/**
+ * redirect uri.
+ * 
+ * @param 	
+ * @return
+ */
+function redirect()
 {
 
 }

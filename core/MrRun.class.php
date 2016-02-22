@@ -33,12 +33,12 @@ class MrRun
      */
 	static private function _createApplication($class)
     {
-        $classkey = strtolower($class);
+        $applicationKey = strtolower($class);
 
-        if (!Mr::getA($classkey)) {
-            Mr::setA($classkey, new $class);
+        if (!Mr::getA($applicationKey)) {
+            Mr::setA($applicationKey, new $class);
         }
-        return Mr::getA($classkey);
+        return Mr::getA($applicationKey);
     }
 
 }

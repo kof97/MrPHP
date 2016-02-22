@@ -24,14 +24,24 @@ defined('FRAME_PATH') or define('FRAME_PATH', dirname(__FILE__) . DS);
 // 核心目录
 defined('CORE_PATH') or define('CORE_PATH', FRAME_PATH . 'core' . DS);
 // 主目录
-defined('MAIN_PATH') or define('MAIN_PATH', FRAME_PATH . 'main' . DS);
+defined('MAIN_PATH') or define('MAIN_PATH', FRAME_PATH . 'application' . DS);
+// 项目目录名
+defined('ITEM_NAME') or define('ITEM_NAME', substr(dirname(__FILE__), strrpos(dirname(__FILE__), DS) + 1));
+
+// 默认 controller
+defined('DEFAULT_CONTROLLER') or define('DEFAULT_CONTROLLER', 'c1c/welcome');
+// 默认 method
+defined('DEFAULT_METHOD') or define('DEFAULT_METHOD', 'kof');
 
 require_once(CORE_PATH . 'Mr.class.php');
 
-function __autoload($classname) 
+function __autoload($className) 
 {
-	$filename = CORE_PATH . $classname . ".class.php";
-	include_once($filename);
+	$fileName = CORE_PATH . $className . ".class.php";
+	if (file_exists($fileName)) {
+		include_once($fileName);
+	}
+
 }
 
 Mr::init();

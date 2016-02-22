@@ -16,6 +16,8 @@ class Mr
 {
 	// application list
 	static private $_a;
+	// class list
+	static private $_class;
 
 	/**
      * init application.
@@ -27,9 +29,11 @@ class Mr
 		if (!DEBUG) {
 			error_reporting(0);
 		}
+
 		Mr::import(CORE_PATH . 'application.func.php');
 
 		MrRun::run();
+
 	}
 
 	/**
@@ -58,6 +62,7 @@ class Mr
     			return array();
     		}
     	}
+
     }
 
     /**
@@ -69,8 +74,9 @@ class Mr
      */
     static public function setA($key, $val)
     {
-        $classkey = strtolower($key);
-        self::$_a[$classkey] = $val;
+        $applicationKey = strtolower($key);
+        self::$_a[$applicationKey] = $val;
+
     }
 
 	/**
@@ -81,8 +87,36 @@ class Mr
      */
     static public function getA($key)
     {
-        $akey = strtolower($key);
-        return isset(self::$_a[$key]) ? self::$_a[$key] : null;
+        $applicationKey = strtolower($key);
+        return isset(self::$_a[$applicationKey]) ? self::$_a[$applicationKey] : null;
+
+    }
+
+    /**
+     * set class.
+     *
+     * @param string $key key.
+     * @param string $val key value.
+     * @return void
+     */
+    static public function setClass($key, $val)
+    {
+        $classKey = strtolower($key);
+        self::$_class[$classKey] = $val;
+
+    }
+
+	/**
+     * get class.
+     *
+     * @param string $key class key.
+     * @return mixed
+     */
+    static public function getClass($key)
+    {
+        $classKey = strtolower($key);
+        return isset(self::$_class[$classKey]) ? self::$_class[$classKey] : null;
+
     }
 
 }
