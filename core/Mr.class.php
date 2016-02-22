@@ -16,6 +16,7 @@ class Mr
 {
 	// application list
 	static private $_a;
+	
 	// class list
 	static private $_class;
 
@@ -56,7 +57,7 @@ class Mr
     		return $succeedImportFile[$fileName];
     	} else {
     		if ($testExist) {
-    			throw new MrException('import not found file :' . $path);
+    			//throw new MrException('import not found file :' . $path);
     			echo "<br/>couldn't find the file which is imported !";
     		} else {
     			return array();
@@ -69,7 +70,7 @@ class Mr
      * set application.
      *
      * @param string $key key.
-     * @param string $val key value.
+     * @param object $val key value.
      * @return void
      */
     static public function setA($key, $val)
@@ -96,7 +97,7 @@ class Mr
      * set class.
      *
      * @param string $key key.
-     * @param string $val key value.
+     * @param object $val key value.
      * @return void
      */
     static public function setClass($key, $val)

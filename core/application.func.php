@@ -57,13 +57,3 @@ function uriSegment($segment)
 
 }
 
-/**
- * redirect uri.
- * 
- * @param 	
- * @return
- */
-function redirect()
-{
-
-}

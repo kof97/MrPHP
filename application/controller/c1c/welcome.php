@@ -6,13 +6,15 @@ class Welcome extends MrController
 	{	
 		$segment = uriSegment(1);
 		//var_dump($segment);
-echo "kof";
-		$this->redirect("c1c/welcome/kk");
+		echo "kof";
+		$this->redirect("index");
 	}
 
 	public function kk()
 	{
-		echo "kk";
+		//echo "kk";
+
+		$this->model("kk")->kkk();
 	}
 
 

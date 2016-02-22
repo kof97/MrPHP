@@ -35,14 +35,9 @@ class MrApplication
      * @param $route uri route, defaule empty.
      * @return mixed
      */
-    public function runController($route = "")
+    public function runController()
     {
-        if (trim($route) == "") {
-            $getRoute = processRoute();
-        } else {
-            $getRoute = "/" . $route;
-        }   
-
+        $getRoute = processRoute();  
         $route = explode("/", $getRoute);
         array_shift($route);
 
@@ -73,14 +68,15 @@ class MrApplication
                 if (strpos($value, DS)) {
                     $value = substr($value, strrpos($value, DS) + 1);
                 }
-                $class = ucfirst($value);
 
+                $class = ucfirst($value);
                 if (class_exists($class)) {
-                    $classKey = strtolower($class);
+                    $classKey = $class;
 
                     if (!Mr::getClass($classKey)) {
                         Mr::setClass($classKey, new $class);
                     }
+
                     // get the method and judge whether it is out of the range, default
                     if (($key + 1) >= count($route)) {
                         $method = DEFAULT_METHOD;
@@ -104,6 +100,7 @@ class MrApplication
 
         echo "controller or method couldn't find, please check your request uri !";
         return false;
+
     }
 
 }

@@ -23,6 +23,7 @@ class MrRun
 	{
 		$app = self::_createApplication('MrApplication');
         $app->start();
+        
 	}
 
 	/**
@@ -39,6 +40,7 @@ class MrRun
             Mr::setA($applicationKey, new $class);
         }
         return Mr::getA($applicationKey);
+
     }
 
 }
