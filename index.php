@@ -25,10 +25,14 @@ defined('FRAME_PATH') or define('FRAME_PATH', dirname(__FILE__) . DS);
 defined('CORE_PATH') or define('CORE_PATH', FRAME_PATH . 'core' . DS);
 // 主目录
 defined('MAIN_PATH') or define('MAIN_PATH', FRAME_PATH . 'application' . DS);
+// 配置文件目录
+defined('CONF_PATH') or define('CONF_PATH', FRAME_PATH . 'application' . DS . 'conf' . DS);
 // 项目目录名
 defined('ITEM_NAME') or define('ITEM_NAME', substr(dirname(__FILE__), strrpos(dirname(__FILE__), DS) + 1));
 // 项目uri地址
 defined('BASE_URI') or define('BASE_URI', "http://" . $_SERVER['SERVER_NAME'] . substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], "index.php") ? strpos($_SERVER['REQUEST_URI'], "index.php") : strlen($_SERVER['REQUEST_URI'])));
+// 用户自定义扩展目录
+defined('EXT_PATH') or define('EXT_PATH', FRAME_PATH . 'application' . DS . 'ext' . DS);
 
 // 默认 controller
 defined('DEFAULT_CONTROLLER') or define('DEFAULT_CONTROLLER', 'c1c/welcome');

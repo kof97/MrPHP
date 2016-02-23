@@ -32,7 +32,7 @@ class MrController
 
 		// if don't have model
 		if (count($filterModel) == 0) {
-			echo "couldn't find the model that you requested, please check your model uri !";
+			showError("couldn't find the model that you requested, please check your model uri !");
 			return false;
 		}
 
@@ -43,7 +43,7 @@ class MrController
 			$fileName = MAIN_PATH . "model" . $modelPath . ".php";
 
 			if (file_exists($fileName)) {
-                include_once($fileName);
+                importClass($fileName);
 
                 $modelKey = ucfirst($value);
                 if (class_exists($modelKey)) {
@@ -59,10 +59,46 @@ class MrController
 			}
 		}
 
-		echo "couldn't find the model that you requested, please check your model uri !";
+		showError("couldn't find the model that you requested, please check your model uri !");
 		return false;
 
 	}
+
+    /**
+     * get view.
+     * 
+     * @param string $viewName view path. 
+     * @param array $data data vars. 
+     * @return mixed
+     */
+    public function view($viewName, $data = array())
+    {   
+        if (is_object($data)) {
+            $data = get_object_vars($data);
+        }
+
+        // get data vars
+        foreach ($data as $key => $value) {
+            $$key = isset($data[$key]) ? $value : "";
+        }
+
+        if (trim($viewName) == "") {
+            $viewName = "index.php";
+        }
+        // replace with directory separator
+        if (strpos($viewName, "/") || strpos($viewName, "\\")) {
+            $viewName = str_replace("/", DS, $viewName);
+            $viewName = str_replace("\\", DS, $viewName);
+        }
+        $viewPath = MAIN_PATH . "view" . DS . $viewName;
+
+        if (file_exists($viewPath)) {
+            include_once($viewPath);
+        } else {
+            showError("the view you requested is not find, please check your request !");
+        }
+
+    }
 
 	/**
      * redirect uri.
@@ -76,6 +112,21 @@ class MrController
     	$uri = BASE_URI . "index.php/" . $route;
         header("Location: " . $uri, TRUE, $http_response_code);
 
+    }
+
+    /**
+     * get the database object.
+     * 
+     * @return mixed
+     */
+    public function db()
+    {
+        if (Mr::getClass("db")) {
+            return Mr::getClass("db");
+        } else {
+            showError("check your database.php to ensure that you make your db enable !");
+        }
+        
     }
 
     /**

@@ -14,7 +14,16 @@ class Welcome extends MrController
 	{
 		//echo "kk";
 
-		$this->model("kk")->kkk();
+		$k = $this->model("kk")->kkk();
+		var_dump($k);
+	}
+
+	public function vv()
+	{
+
+		$data['kk'] = 5;
+
+		$this->view("kof.html", $data);
 	}
 
 

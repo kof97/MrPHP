@@ -63,7 +63,7 @@ class MrApplication
             $fileName = MAIN_PATH . "controller" . $classPath . ".php";
 
             if (file_exists($fileName)) {
-                include_once($fileName);
+                importClass($fileName);
                 // get the class name
                 if (strpos($value, DS)) {
                     $value = substr($value, strrpos($value, DS) + 1);
@@ -98,7 +98,7 @@ class MrApplication
             }
         }
 
-        echo "controller or method couldn't find, please check your request uri !";
+        showError("controller or method couldn't find, please check your request uri !");
         return false;
 
     }

@@ -30,8 +30,16 @@ class Mr
 		if (!DEBUG) {
 			error_reporting(0);
 		}
-
+        
+        // load application function
 		Mr::import(CORE_PATH . 'application.func.php');
+
+        // load database
+        Mr::import(CORE_PATH . "db" . DS . "db.php");
+        $db = getDb();    
+        if (!Mr::getClass("db")) {
+            Mr::setClass("db", $db);
+        }    
 
 		MrRun::run();
 
@@ -58,7 +66,7 @@ class Mr
     	} else {
     		if ($testExist) {
     			//throw new MrException('import not found file :' . $path);
-    			echo "<br/>couldn't find the file which is imported !";
+    			showError("couldn't find the file which is imported !");
     		} else {
     			return array();
     		}
