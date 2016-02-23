@@ -26,6 +26,11 @@ class Welcome extends MrController
 		$this->view("kof.html", $data);
 	}
 
+	public function ll()
+	{
+		echo 111111;
+	}
+
 
 
 

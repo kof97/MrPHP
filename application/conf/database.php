@@ -1,4 +1,7 @@
 <?php 
+
+if (!defined('ACC')) exit('this script access allowed');
+
 /**
  * -------------------------------------------------------------------
  * DATABASE SETTINGS

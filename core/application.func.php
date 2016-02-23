@@ -1,4 +1,27 @@
 <?php 
+/**
+ * Mr PHP
+ *
+ * PHP version 5
+ *
+ * @category PHP
+ * @package  Core.base
+ * @author   LYJ <1048434786@qq.com>
+ * @license  
+ * @version  
+ * @link     
+ */
+if (!defined('ACC')) exit('this script access allowed');
+
+/**
+ * get the post data.
+ * 
+ * @return
+ */
+function getPost()
+{
+	
+}
 
 /**
  * process route.
@@ -47,12 +70,30 @@ function uriSegment($segment)
 }
 
 /**
+ * get the request url by controller.
+ * 
+ * @param string $controller controller.
+ * @return string
+ */
+function siteUrl($controller = "")
+{
+	$url = BASE_URI . "index.php" . DS . $controller;
+
+	// replace with '/'
+    if (strpos($url, "\\")) {
+        $url = str_replace("\\", "/", $url);
+    }
+	return $url;
+
+}
+
+/**
  * show the error message.
  * 
  * @param string $error error message.
  * @return void
  */
-function showError($error)
+function showError($error = "")
 {
 	echo "<h2 style=''>$error</h2>";
 	exit;	

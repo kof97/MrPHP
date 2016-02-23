@@ -11,6 +11,7 @@
  * @version  
  * @link     
  */
+if (!defined('ACC')) exit('this script access allowed');
 
 class Mr
 {

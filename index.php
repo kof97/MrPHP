@@ -12,6 +12,9 @@
  * @link     
  */
 
+// defind ACCESS
+defined('ACC') or define('ACC', true);
+
 // 开启调试 是
 defined('DEBUG') or define('DEBUG', true);
 // 自启动session 是
