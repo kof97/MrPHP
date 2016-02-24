@@ -13,6 +13,7 @@ if (!defined('ACC')) exit('this script access allowed');
  *
  *	['enable'] whether enable the database, ture or false.
  *	['hostname'] The hostname of your database server.
+ *	['port'] connect port. default 3306.
  *	['username'] The username used to connect to the database.
  *	['password'] The password used to connect to the database.
  *	['database'] The name of the database you want to connect to.
@@ -23,9 +24,10 @@ if (!defined('ACC')) exit('this script access allowed');
 
 	$db["enable"] = true;
 	$db["hostname"] = "localhost";
+	$db["port"] = "3306";
 	$db["username"] = "root";
 	$db["password"] = "kof97";
 	$db["database"] = "test";
-	$db["dbdriver"] = "mysqli";
+	$db["dbdriver"] = "pdo";
 	$db["charset"] = "utf8";
 

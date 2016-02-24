@@ -29,6 +29,11 @@ class Index extends MrController
 		$this->redirect("index/welcome");
 	}
 
+	public function testdb()
+	{
+		var_dump($this->db());
+	}
+
 }
 
 

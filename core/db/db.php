@@ -54,7 +54,7 @@ function getDb()
 function createMysqli($db)
 {
 	$mysqli = new mysqli();
-	$mysqli->connect($db['hostname'], $db['username'], $db['password'], $db['database']);
+	$mysqli->connect($db['hostname'], $db['username'], $db['password'], $db['database'], $db['port']);
 	$mysqli->set_charset($db['charset']);
 
 	return $mysqli;
@@ -69,7 +69,7 @@ function createMysqli($db)
  */
 function createPdo($db)
 {
-	$dsn = 'mysql:dbname=' . $db['database'] . ';host=' . $db['hostname'];
+	$dsn = 'mysql:dbname=' . $db['database'] . ';host=' . $db['hostname'] . ';charset=' . $db['charset'] . ';port=' . $db['port'];
 	$user = $db['username'];
 	$password = $db['password'];
 
