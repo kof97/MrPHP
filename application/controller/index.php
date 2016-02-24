@@ -18,6 +18,10 @@ class Index extends MrController
 		$url = siteUrl("index/welcome");
 
 		echo $url;
+
+		$page = new page();
+
+		var_dump($page->k());
 	}
 
 	public function re()
