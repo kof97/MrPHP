@@ -16,11 +16,13 @@ if (!defined('ACC')) exit('this script access allowed');
 /**
  * get the post data.
  * 
- * @return
+ * @return array
  */
 function getPost()
 {
+	$post = $_POST;
 	
+	return $post;
 }
 
 /**

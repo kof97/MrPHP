@@ -34,6 +34,11 @@ class Index extends MrController
 		var_dump($this->db());
 	}
 
+	public function testPost()
+	{
+		$p = getPost();
+	}
+
 }
 
 
