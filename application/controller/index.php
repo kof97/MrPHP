@@ -36,7 +36,9 @@ class Index extends MrController
 
 	public function testPost()
 	{
-		$p = getPost();
+		$p = request("1");
+
+		var_dump($p);
 	}
 
 }
