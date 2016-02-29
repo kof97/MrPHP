@@ -8,6 +8,8 @@ define("LIBRARY_PATH", realpath("../library"));
 //var_dump(LIBRARY_PATH);
 
 
+//include_once(LIBRARY_PATH . DS . "index.php");
+
 function __autoload($class)
 {
 	$path = LIBRARY_PATH . DS . "core" . DS . $class . ".class.php";

@@ -50,10 +50,10 @@ class MrController
                 if (class_exists($modelKey)) {
 
 					if (!$this->getModel($modelKey)) {
-			            $this->setModel($modelKey, new $modelKey);
-			        }
+                        $this->setModel($modelKey, new $modelKey);
+                    }
 
-			        return $this->getModel($modelKey);
+                    return $this->getModel($modelKey);
                 }                
 			} else {
 				continue;
