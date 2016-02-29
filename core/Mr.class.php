@@ -21,7 +21,7 @@ class Mr
 	// class list
 	static private $_class;
 
-	/**
+    /**
      * init application.
      *
      * @return mixed
