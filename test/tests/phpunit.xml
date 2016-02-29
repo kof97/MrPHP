@@ -1,4 +1,4 @@
-<phpunit bootstrap="./bootstrap.php" stopOnFailure="true">
+<phpunit>
   	<testsuites>
   	  	<testsuite name="MrPHP">
   	  	  	<directory>./MrPHPTest/</directory>

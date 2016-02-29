@@ -2,17 +2,17 @@
 
 define("ACC", true);
 define("DS", DIRECTORY_SEPARATOR);
-define("LIBRARY_PATH", realpath("../library"));
+define("TEST_PATH", dirname(__FILE__) . DS);
 
+$class = TEST_PATH . "../library/core" . DS . "MrController.class.php";
 
-//var_dump(LIBRARY_PATH);
+var_dump($class);
 
-
-//include_once(LIBRARY_PATH . DS . "index.php");
+include_once($class);
 
 function __autoload($class)
 {
-	$path = LIBRARY_PATH . DS . "core" . DS . $class . ".class.php";
+	$path = TEST_PATH . "../library/core" . DS . "MrController.class.php";
 
 	if (file_exists($path)) {
 		include_once($path);
