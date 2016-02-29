@@ -27,41 +27,41 @@ class MrController
      */
     public function model($modelName)
     {
-    	$model = explode("/", $modelName);
+        $model = explode("/", $modelName);
 
-    	$filterModel = preg_grep("/^[a-zA-Z]/", $model);
+        $filterModel = preg_grep("/^[a-zA-Z]/", $model);
 
-    	// if don't have model
-    	if (count($filterModel) == 0) {
-    		showError("couldn't find the model that you requested, please check your model uri !");
-    		return false;
-    	}
+        // if don't have model
+        if (count($filterModel) == 0) {
+            showError("couldn't find the model that you requested, please check your model uri !");
+            return false;
+        }
 
-    	// get the model that can be used
-    	$modelPath = "";
-    	foreach ($filterModel as $key => $value) {
-    		$modelPath .= DS . $value;
-    		$fileName = MAIN_PATH . "model" . $modelPath . ".php";
+        // get the model that can be used
+        $modelPath = "";
+        foreach ($filterModel as $key => $value) {
+            $modelPath .= DS . $value;
+            $fileName = MAIN_PATH . "model" . $modelPath . ".php";
 
-    		if (file_exists($fileName)) {
+            if (file_exists($fileName)) {
                 importClass($fileName);
 
                 $modelKey = ucfirst($value);
                 if (class_exists($modelKey)) {
 
-    				if (!$this->getModel($modelKey)) {
-    		            $this->setModel($modelKey, new $modelKey);
-    		        }
+                    if (!$this->getModel($modelKey)) {
+                        $this->setModel($modelKey, new $modelKey);
+                    }
 
-    		        return $this->getModel($modelKey);
+                    return $this->getModel($modelKey);
                 }                
-    		} else {
-    			continue;
-    		}
-    	}
+            } else {
+                continue;
+            }
+        }
 
-    	showError("couldn't find the model that you requested, please check your model uri !");
-    	return false;
+        showError("couldn't find the model that you requested, please check your model uri !");
+        return false;
 
     }
 
@@ -110,7 +110,7 @@ class MrController
      */
     public function redirect($route, $http_response_code = 302)
     {
-    	$uri = BASE_URI . "index.php/" . $route;
+        $uri = BASE_URI . "index.php/" . $route;
         header("Location: " . $uri, TRUE, $http_response_code);
 
     }
