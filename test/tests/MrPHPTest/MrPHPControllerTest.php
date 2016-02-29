@@ -6,7 +6,7 @@ class MrPHPControllerTest extends PHPUnit_Framework_TestCase
 
 	function __construct()
 	{
-		$this->controller = new Controller();
+		$this->controller = new MrController();
 	}
 
 	public function testUriSegment()
@@ -18,6 +18,7 @@ class MrPHPControllerTest extends PHPUnit_Framework_TestCase
 	}
 	
 }
+
 
 
 
