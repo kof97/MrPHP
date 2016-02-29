@@ -45,16 +45,16 @@ require_once(CORE_PATH . 'Mr.class.php');
 
 function __autoload($className) 
 {
-	$fileName = CORE_PATH . $className . ".class.php";
-	
-	if (!file_exists($fileName)) {
-		$fileName = EXT_PATH . $className . ".php";
-		if (!file_exists($fileName)) {
-			return false;
-		}
-	} 
+    $fileName = CORE_PATH . $className . ".class.php";
+    
+    if (!file_exists($fileName)) {
+        $fileName = EXT_PATH . $className . ".php";
+        if (!file_exists($fileName)) {
+            return false;
+        }
+    } 
 
-	include_once($fileName);
+    include_once($fileName);
 
 }
 
