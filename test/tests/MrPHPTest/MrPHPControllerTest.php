@@ -7,11 +7,6 @@ define("NOW_PATH", dirname(__FILE__) . DS);
 include_once(NOW_PATH . "../../library" . DS . "index.php");
 //include_once(NOW_PATH . "../../library/core" . DS . "application.func.php");
 
-
-
-
-
-
 class MrPHPControllerTest extends PHPUnit_Framework_TestCase
 {
 	public $controller;
