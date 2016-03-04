@@ -6,6 +6,11 @@ class Index extends MrController
         echo "Welcome to use Mr. PHP !";
     }
 
+    public function testkk()
+    {
+        $this->model("kk");
+    }
+
     public function getSegment()
     {
         $seg = uriSegment(3);

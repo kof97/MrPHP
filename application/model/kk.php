@@ -3,10 +3,10 @@ class Kk extends MrModel
 {
 
 
-    function kkk()
+    function __construct()
     {
-        var_dump($this->db());
-        echo "kkkk";
+        var_dump($this->conn());
+     
 
         return 0;
     }
