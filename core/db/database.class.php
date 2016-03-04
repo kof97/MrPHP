@@ -13,19 +13,27 @@
  */
 if (!defined('ACC')) exit('this script access allowed');
 
-class Db
+class Database
 {
-	private $_db;
+    // 
+    private $_db;
 
-	function db()
-	{
-		if (Mr::getClass("db")) {
+    public function db()
+    {
+        if (Mr::getClass("db")) {
             $this->_db = Mr::getClass("db");
         }
 
-        return $this->_db;
+        return Mr::getClass("dbClass");
 
-	}
+    }
+
+    function __call($method, $args)
+    {
+        var_dump(get_class($this->_db));
+        
+    }
+
 
 
 

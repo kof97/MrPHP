@@ -151,8 +151,12 @@ class MrController
      */
     public function __call($method, $args)
     {
-        if (method_exists(object, $method)) {
-            return ;
+        if ($dbClass = Mr::getClass("dbClass")) {
+
+            if (method_exists($dbClass, $method)) {
+                return $dbClass->$method();
+            }
+
         }
 
         showError("method dosn't exist !");

@@ -28,6 +28,9 @@ function getDb()
     
     if (!empty($db)) {
         if (trim(strtolower($db['enable']))) {
+
+            dbClass();
+
             // create db object
             $dbdriver = trim(strtolower($db['dbdriver']));
             if ($dbdriver == "mysqli") {
@@ -80,6 +83,20 @@ function createPdo($db)
     }
 
     return $dbh;
+
+}
+
+/**
+ * create database class
+ * 
+ * @return void
+ */
+function dbClass()
+{
+    $dbClass = new Database();    
+    if (!Mr::getClass("dbClass")) {
+        Mr::setClass("dbClass", $dbClass);
+    } 
 
 }
 
