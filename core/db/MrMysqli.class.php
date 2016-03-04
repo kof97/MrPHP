@@ -15,10 +15,21 @@ if (!defined('ACC')) exit('this script access allowed');
 
 class MrMysqli extends Database
 {
-    
-
+    // self obj
+	private $db;
 	
+	function __construct($class = __CLASS__)
+	{
+		if (Mr::getClass($class)) {
+			$this->db = Mr::getClass($class);
+		}
 
+	}
+
+	public function query()
+	{
+		var_dump($this->db);
+	}
 
 
 }

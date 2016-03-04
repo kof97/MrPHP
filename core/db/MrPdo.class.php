@@ -15,12 +15,23 @@ if (!defined('ACC')) exit('this script access allowed');
 
 class MrPdo extends Database
 {
-    
-
-
-	function kk()
+	// self obj
+	private $db;
+	
+	function __construct($class = __CLASS__)
 	{
-		echo 111111111;
+		if (Mr::getClass($class)) {
+			$this->db = Mr::getClass($class);
+		}
+		var_dump(Mr::getClass($class));
+		var_dump($class);
+
+	}
+
+	public function query()
+	{
+		echo 1;
+		var_dump($this->db);
 	}
 
 

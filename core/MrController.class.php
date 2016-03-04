@@ -18,7 +18,6 @@ class MrController
     // model list
     static private $_model = array();
 
-
     /** 
      * get model.
      * 
@@ -161,6 +160,18 @@ class MrController
         }
 
         showError("method dosn't exist ! Please check your conf/database.php !");
+    }
+
+    /**
+     * call db or conn.
+     *
+     * @param string $name method.
+     * @return method
+     */
+    public function __get($name)
+    {
+        return $this->$name();
+        
     }
 
 }

@@ -31,7 +31,8 @@ class Index extends MrController
 
     public function testdb()
     {
-        var_dump($this->conn());
+        $this->db->query();
+        
     }
 
     public function testPost()
