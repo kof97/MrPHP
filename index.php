@@ -43,7 +43,7 @@ defined('EXT_PATH') or define('EXT_PATH', FRAME_PATH . 'application' . DS . 'ext
 
 require_once(CORE_PATH . 'Mr.class.php');
 
-function __autoload($className) 
+function loader($className) 
 {
     $fileName = CORE_PATH . $className . ".class.php";
     
@@ -57,5 +57,7 @@ function __autoload($className)
     include_once($fileName);
 
 }
+
+spl_autoload_register("loader");
 
 Mr::init();
