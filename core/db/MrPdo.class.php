@@ -13,19 +13,15 @@
  */
 if (!defined('ACC')) exit('this script access allowed');
 
-class Database
+class MrPdo extends Database
 {
     
-    public function db()
-    {
-        return Mr::getClass("dbClass");
 
-    }
+	function kk()
+	{
+		echo 111111111;
+	}
 
-    public function conn()
-    {
-        return Mr::getClass("db");
 
-    }
 
 }
