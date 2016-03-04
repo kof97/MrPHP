@@ -43,21 +43,22 @@ class MrController
             $modelPath .= DS . $value;
             $fileName = MAIN_PATH . "model" . $modelPath . ".php";
 
-            if (file_exists($fileName)) {
-                importClass($fileName);
-
-                $modelKey = ucfirst($value);
-                if (class_exists($modelKey)) {
-
-                    if (!$this->getModel($modelKey)) {
-                        $this->setModel($modelKey, new $modelKey);
-                    }
-
-                    return $this->getModel($modelKey);
-                }                
-            } else {
+            if (!file_exists($fileName)) {
                 continue;
             }
+
+            importClass($fileName);
+
+            $modelKey = ucfirst($value);
+            if (class_exists($modelKey)) {
+
+                if (!$this->getModel($modelKey)) {
+                    $this->setModel($modelKey, new $modelKey);
+                }
+
+                return $this->getModel($modelKey);
+            }                
+            
         }
 
         showError("couldn't find the model that you requested, please check your model uri !");
