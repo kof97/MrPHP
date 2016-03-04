@@ -48,9 +48,14 @@ function loader($className)
     $fileName = CORE_PATH . $className . ".class.php";
     
     if (!file_exists($fileName)) {
+
         $fileName = EXT_PATH . $className . ".php";
         if (!file_exists($fileName)) {
-            return false;
+
+        	$fileName = CORE_PATH . "db" . DS . $className . ".class.php";
+            if (!file_exists($fileName)) {
+            	return false;
+            }
         }
     } 
 

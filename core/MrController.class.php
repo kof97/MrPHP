@@ -117,21 +117,6 @@ class MrController
     }
 
     /**
-     * get the database object.
-     * 
-     * @return mixed
-     */
-    public function db()
-    {
-        if (Mr::getClass("db")) {
-            return Mr::getClass("db");
-        } else {
-            showError("check your database.php to ensure that you make your db enable !");
-        }
-        
-    }
-
-    /**
      * set model.
      *
      * @param string $key key.
@@ -156,6 +141,21 @@ class MrController
         $modelKey = strtolower($key);
         return isset(self::$_model[$modelKey]) ? self::$_model[$modelKey] : null;
 
+    }
+
+    /**
+     * call db.
+     *
+     * @param string $key model key.
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        if (method_exists(object, $method)) {
+            return ;
+        }
+
+        showError("method dosn't exist !");
     }
 
 }
