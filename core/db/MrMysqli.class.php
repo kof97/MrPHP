@@ -13,15 +13,11 @@
  */
 if (!defined('ACC')) exit('this script access allowed');
 
-class MrPdo extends Database
+class MrMysqli extends Database
 {
     
 
-
-	function kk()
-	{
-		echo 111111111;
-	}
+	
 
 
 

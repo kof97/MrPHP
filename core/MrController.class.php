@@ -146,7 +146,8 @@ class MrController
     /**
      * call db.
      *
-     * @param string $key model key.
+     * @param string $method method.
+     * @param string $args args.
      * @return mixed
      */
     public function __call($method, $args)
@@ -159,7 +160,7 @@ class MrController
 
         }
 
-        showError("method dosn't exist !");
+        showError("method dosn't exist ! Please check your conf/database.php !");
     }
 
 }
