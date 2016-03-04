@@ -16,22 +16,22 @@ if (!defined('ACC')) exit('this script access allowed');
 class Database
 {
     /**
-     * get self.
+     * get db obj.
      *
      * @return object
      */
-    public function db()
+    public function conn()
     {
         return Mr::getClass("dbClass");
 
     }
 
     /**
-     * get db obj.
+     * get self.
      *
      * @return object
      */
-    public function conn()
+    public function db()
     {
         return Mr::getClass("db");
 
