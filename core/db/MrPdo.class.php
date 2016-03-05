@@ -16,10 +16,26 @@ if (!defined('ACC')) exit('this script access allowed');
 class MrPdo extends Database
 {
 
-    public function query()
+    /**
+     * single query.
+     * 
+     * @param string $sql sql query string.
+     * @return array
+     */
+    public function query($sql = "")
     {
-        echo 1;
-        var_dump($this->db());
+        if (trim($sql == "")) {
+            showError("sql query needs one param to query !");
+        }
+
+        $query = $this->db()->query($sql);
+        if (!$query) {
+            showError("please check your sql string !");
+        }
+
+        $res = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $res;
         
     }
 
