@@ -36,13 +36,17 @@ class MrMysqli extends Database
 
         switch ($mode) {
             case 'array': 
-                $res = $query->fetch(PDO::FETCH_ASSOC); break;
+                $res = $query->fetch_assoc(); break;
             case 'arrayAll': 
-                $res = $query->fetchAll(PDO::FETCH_ASSOC); break;
+                $res = array();
+                while ($r = $query->fetch_assoc()) {
+                    array_push($res, $r); 
+                }
+                break;
             case 'object': 
-                $res = $query->fetchObject(); break;
+                $res = $query->fetch_object(); break;
             case 'count': 
-                $res = $query->rowCount(); break;
+                $res = $query->num_rows; break;
 
             default: $res = $query->fetchAll(PDO::FETCH_ASSOC); break;
         }
