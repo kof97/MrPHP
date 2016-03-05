@@ -19,10 +19,12 @@ class MrPdo extends Database
     /**
      * single query.
      * 
-     * @param string $sql sql query string.
+     * @param string $sql sql query string。
+     * @param string $mode the query mode type. Currently supported:
+     *          count, array, arrayAll, object 
      * @return array
      */
-    public function query($sql = "")
+    public function query($sql = "", $mode = "arrayAll")
     {
         if (trim($sql == "")) {
             showError("sql query needs one param to query !");
@@ -33,11 +35,23 @@ class MrPdo extends Database
             showError("please check your sql string !");
         }
 
-        $res = $query->fetchAll(PDO::FETCH_ASSOC);
-        
+        switch ($mode) {
+            case 'array': 
+                $res = $query->fetch(PDO::FETCH_ASSOC); break;
+            case 'arrayAll': 
+                $res = $query->fetchAll(PDO::FETCH_ASSOC); break;
+            case 'object': 
+                $res = $query->fetchObject(); break;
+            case 'count': 
+                $res = $query->rowCount(); break;
+
+            default: $res = $query->fetchAll(PDO::FETCH_ASSOC); break;
+        }
+
         return $res;
         
     }
+
 
 
 
