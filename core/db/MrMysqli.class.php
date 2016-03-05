@@ -21,7 +21,7 @@ class MrMysqli extends Database
      * @param string $sql sql query string。
      * @param string $mode the query mode type. Currently supported:
      *          count, array, arrayAll, object 
-     * @return array
+     * @return mixed
      */
     public function query($sql = "", $mode = "arrayAll")
     {
@@ -37,18 +37,18 @@ class MrMysqli extends Database
         switch ($mode) {
             case 'array': 
                 $res = $query->fetch_assoc(); break;
-            case 'arrayAll': 
-                $res = array();
-                while ($r = $query->fetch_assoc()) {
-                    array_push($res, $r); 
-                }
-                break;
             case 'object': 
                 $res = $query->fetch_object(); break;
             case 'count': 
                 $res = $query->num_rows; break;
 
-            default: $res = $query->fetchAll(PDO::FETCH_ASSOC); break;
+            default: 
+                $res = array();
+                while ($r = $query->fetch_assoc()) {
+                    array_push($res, $r); 
+                }
+                break;
+
         }
 
         return $res;

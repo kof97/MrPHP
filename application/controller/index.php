@@ -36,7 +36,7 @@ class Index extends MrController
 
     public function testdb()
     {
-        $res = $this->conn->query("select * from documents");
+        $res = $this->conn->query("select * from documents", "321");
 
         var_dump($res);
 

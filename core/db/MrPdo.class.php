@@ -22,7 +22,7 @@ class MrPdo extends Database
      * @param string $sql sql query string。
      * @param string $mode the query mode type. Currently supported:
      *          count, array, arrayAll, object 
-     * @return array
+     * @return mixed
      */
     public function query($sql = "", $mode = "arrayAll")
     {
@@ -38,14 +38,13 @@ class MrPdo extends Database
         switch ($mode) {
             case 'array': 
                 $res = $query->fetch(PDO::FETCH_ASSOC); break;
-            case 'arrayAll': 
-                $res = $query->fetchAll(PDO::FETCH_ASSOC); break;
             case 'object': 
                 $res = $query->fetchObject(); break;
             case 'count': 
                 $res = $query->rowCount(); break;
 
             default: $res = $query->fetchAll(PDO::FETCH_ASSOC); break;
+
         }
 
         return $res;
