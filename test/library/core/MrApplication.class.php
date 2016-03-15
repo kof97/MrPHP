@@ -58,45 +58,53 @@ class MrApplication
         }
 
         // get the class that can be used
-        $classPath = "";
+        $classPathU = "";
+        $classPathL = "";
         foreach ($filterRoute as $key => $value) {
-            $classPath .= DS . $value;
-            $fileName = MAIN_PATH . "controller" . $classPath . ".php";
+            $classPathL .= DS . lcfirst($value);
+            $fileName = MAIN_PATH . "controller" . $classPathL . ".php";
 
-            if (file_exists($fileName)) {
-                importClass($fileName);
-                // get the class name
-                if (strpos($value, DS)) {
-                    $value = substr($value, strrpos($value, DS) + 1);
+            if (!file_exists($fileName)) {
+
+                $classPathU .= DS . ucfirst($value);
+                $fileName = MAIN_PATH . "controller" . $classPathU . ".php";
+                
+                if (!file_exists($fileName)) {
+                    continue;
                 }
-
-                $class = ucfirst($value);
-                if (class_exists($class)) {
-                    $classKey = $class;
-
-                    if (!Mr::getClass($classKey)) {
-                        Mr::setClass($classKey, new $class);
-                    }
-
-                    // get the method and judge whether it is out of the range, default
-                    if (($key + 1) >= count($route)) {
-                        $method = DEFAULT_METHOD;
-                    } else {
-                        if (preg_match("/^[a-zA-Z]/", $route[$key + 1])) {
-                            $method = $route[$key + 1];
-                        } else {
-                            $method = DEFAULT_METHOD;
-                        }
-                    }
-
-                    // whether the method exists
-                    if (method_exists(Mr::getClass($classKey), $method)) {
-                        return Mr::getClass($classKey)->$method();
-                    }  
-                }
-            } else {
-                continue;
             }
+            
+            importClass($fileName);
+            // get the class name
+            if (strpos($value, DS)) {
+                $value = substr($value, strrpos($value, DS) + 1);
+            }
+
+            $class = ucfirst($value);
+            if (class_exists($class)) {
+                $classKey = $class;
+
+                if (!Mr::getClass($classKey)) {
+                    Mr::setClass($classKey, new $class);
+                }
+
+                // get the method and judge whether it is out of the range, default
+                if (($key + 1) >= count($route)) {
+                    $method = DEFAULT_METHOD;
+                } else {
+                    if (preg_match("/^[a-zA-Z]/", $route[$key + 1])) {
+                        $method = $route[$key + 1];
+                    } else {
+                        $method = DEFAULT_METHOD;
+                    }
+                }
+
+                // whether the method exists
+                if (method_exists(Mr::getClass($classKey), $method)) {
+                    return Mr::getClass($classKey)->$method();
+                }  
+            }
+          
         }
 
         showError("controller or method couldn't find, please check your request uri !");

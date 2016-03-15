@@ -1,45 +1,55 @@
 <?php 
 class Index extends MrController
 {
-	public function welcome()
-	{
-		echo "Welcome to use Mr. PHP !";
-	}
+    public function welcome()
+    {
+        echo "Welcome to use Mr. PHP !";
+    }
 
-	public function getSegment()
-	{
-		$seg = uriSegment(3);
+    public function testkk()
+    {
+        $this->model("kk");
+    }
 
-		echo $seg;
-	}
+    public function getSegment()
+    {
+        $seg = uriSegment(3);
 
-	public function getUrl()
-	{
-		$url = siteUrl("index/welcome");
+        echo $seg;
+    }
 
-		echo $url;
+    public function getUrl()
+    {
+        $url = siteUrl("index/welcome");
 
-		$page = new page();
+        echo $url;
 
-		var_dump($page->k());
-	}
+        $page = new page();
 
-	public function re()
-	{
-		$this->redirect("index/welcome");
-	}
+        var_dump($page->k());
+    }
 
-	public function testdb()
-	{
-		var_dump($this->db());
-	}
+    public function re()
+    {
+        $this->redirect("index/welcome");
+    }
 
-	public function testPost()
-	{
-		$p = request("1");
+    public function testdb()
+    {
+        $res = $this->conn->query("select * from documents", "321");
 
-		var_dump($p);
-	}
+        var_dump($res);
+
+        
+        
+    }
+
+    public function testPost()
+    {
+        $p = request("1");
+
+        var_dump($p);
+    }
 
 }
 
