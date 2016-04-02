@@ -49,6 +49,7 @@ function loader($className)
     
     if (!file_exists($fileName)) {
 
+        $fileName = EXT_PATH . lcfirst($className) . ".php";
         if (!file_exists($fileName)) {
 
             $fileName = EXT_PATH . ucfirst($className) . ".php";
