@@ -1,0 +1,21 @@
+## 
+> * github / coding
+> * 不用 .class
+> * 看 PSR 文档
+> * 
+
+
+
+PSR-0 autoload
+PSR-1 基本代码规范
+PSR-2 代码风格
+PSR-3 日志接口规范 monolog
+PSR-4 PHP5.4 之后的 autoload
+PSR-5 是 PHPDOC 规范
+PSR-6 是 缓存接口规范 
+PSR-7 是 HTTP消息接口规范  = =
+	PHP 最有名的 http client 组件 
+	叫做 guzzle 用的是 psr7 规范
+
+Elasticsearch / Solr 
+
