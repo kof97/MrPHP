@@ -16,7 +16,7 @@ if (!defined('ACC')) exit('this script access allowed');
 class MrController
 {
     // model list
-    static private $_model = array();
+    static private $model = array();
 
     /** 
      * get model.
@@ -133,7 +133,7 @@ class MrController
     public function setModel($key, $val)
     {
         $modelKey = strtolower($key);
-        self::$_model[$modelKey] = $val;
+        self::$model[$modelKey] = $val;
 
     }
 
@@ -146,7 +146,7 @@ class MrController
     public function getModel($key)
     {
         $modelKey = strtolower($key);
-        return isset(self::$_model[$modelKey]) ? self::$_model[$modelKey] : null;
+        return isset(self::$model[$modelKey]) ? self::$model[$modelKey] : null;
 
     }
 

@@ -1,7 +1,7 @@
 <?php 
-class Index extends MrController
+class Welcome extends MrController
 {
-    public function welcome()
+    public function kof()
     {
         echo "Welcome to use Mr. PHP !";
     }

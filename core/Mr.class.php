@@ -16,10 +16,10 @@ if (!defined('ACC')) exit('this script access allowed');
 class Mr
 {
     // application list
-    static private $_a;
-	
+    static private $a;
+    
     // class list
-    static private $_class;
+    static private $class;
 
     /**
      * init application.
@@ -49,7 +49,7 @@ class Mr
     /**
      * import file or path.
      *
-     * @param string  $path 	 file path.
+     * @param string  $path      file path.
      * @param boolean $testExist allow test exist.
      * @return mixed
      */
@@ -62,7 +62,7 @@ class Mr
 
             $fileName = substr($path, (strrpos($path, DS) + 1));
             $succeedImportFile[$fileName] = (boolean)$status;
-    		
+            
             return $succeedImportFile[$fileName];
         } else {
             if ($testExist) {
@@ -85,7 +85,7 @@ class Mr
     static public function setA($key, $val)
     {
         $applicationKey = strtolower($key);
-        self::$_a[$applicationKey] = $val;
+        self::$a[$applicationKey] = $val;
 
     }
 
@@ -98,7 +98,7 @@ class Mr
     static public function getA($key)
     {
         $applicationKey = strtolower($key);
-        return isset(self::$_a[$applicationKey]) ? self::$_a[$applicationKey] : null;
+        return isset(self::$a[$applicationKey]) ? self::$a[$applicationKey] : null;
 
     }
 
@@ -112,7 +112,7 @@ class Mr
     static public function setClass($key, $val)
     {
         $classKey = strtolower($key);
-        self::$_class[$classKey] = $val;
+        self::$class[$classKey] = $val;
 
     }
 
@@ -125,7 +125,7 @@ class Mr
     static public function getClass($key)
     {
         $classKey = strtolower($key);
-        return isset(self::$_class[$classKey]) ? self::$_class[$classKey] : null;
+        return isset(self::$class[$classKey]) ? self::$class[$classKey] : null;
 
     }
 

@@ -20,7 +20,7 @@ defined('DEBUG') or define('DEBUG', true);
 // 自启动session 是
 defined('AUTO_START_SESSION') or define('AUTO_START_SESSION', true);
 // 默认 controller
-defined('DEFAULT_CONTROLLER') or define('DEFAULT_CONTROLLER', 'c1c/welcome');
+defined('DEFAULT_CONTROLLER') or define('DEFAULT_CONTROLLER', 'welcome');
 // 默认 method
 defined('DEFAULT_METHOD') or define('DEFAULT_METHOD', 'kof');
 

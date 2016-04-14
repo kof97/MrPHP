@@ -22,7 +22,7 @@ class MrRun
      */
     static public function run()
     {
-        $app = self::_createApplication('MrApplication');
+        $app = self::createApplication('MrApplication');
         $app->start();
         
     }
@@ -33,7 +33,7 @@ class MrRun
      * @param string $class className.
      * @return object
      */
-    static private function _createApplication($class)
+    static private function createApplication($class)
     {
         $applicationKey = strtolower($class);
 

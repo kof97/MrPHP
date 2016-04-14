@@ -1,9 +1,9 @@
 <?php 
 class Page
 {
-	public function k()
-	{
-		return "page";
-	}
+    public function k()
+    {
+        return "page";
+    }
 }
 
